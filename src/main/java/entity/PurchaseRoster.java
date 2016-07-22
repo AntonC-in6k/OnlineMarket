@@ -1,9 +1,8 @@
 package entity;
 
 import java.math.BigDecimal;
-import java.sql.Date;
-import java.sql.Time;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 
 /**
@@ -12,7 +11,7 @@ import java.time.LocalDate;
 public class PurchaseRoster {
     private Integer purchaseId;
     private Customer customerId;
-    private LocalDate localDate;
+    private LocalDateTime localDateTime;
     private BigDecimal cost;
 
     public PurchaseRoster() {
@@ -32,6 +31,14 @@ public class PurchaseRoster {
 
     public void setCustomerId(Customer customerId) {
         this.customerId = customerId;
+    }
+
+    public LocalDateTime getLocalDateTime() {
+        return localDateTime;
+    }
+
+    public void setLocalDateTime(LocalDateTime localDateTime) {
+        this.localDateTime = localDateTime;
     }
 
     public BigDecimal getCost() {

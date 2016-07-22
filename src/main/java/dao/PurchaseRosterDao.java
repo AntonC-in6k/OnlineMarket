@@ -23,10 +23,9 @@ public class PurchaseRosterDao {
         Statement stmt = connection.createStatement();
 
         String resultSet = "INSERT INTO PurchaseRoster " +
-                "(CustomerId,Date,Time,Cost) "+
+                "(CustomerId,DateTime,Cost) "+
                 "VALUES ('"+ purchaseRoster.getCustomerId()+"'," +
-                "'"+ purchaseRoster.getDate()+"',"+
-                "'"+ purchaseRoster.getTime()+"'," +
+                "'"+ purchaseRoster.getLocalDateTime()+"',"+
                 "'"+ purchaseRoster.getCost()+"')";
         stmt.executeUpdate(resultSet);
     }
@@ -43,8 +42,7 @@ public class PurchaseRosterDao {
             PurchaseRoster purchaseRoster = new PurchaseRoster();
             purchaseRoster.setPurchaseId(resultSet.getInt("PurchaseId"));
             purchaseRoster.setCustomerId(resultSet.getInt("CustomerId"));
-            purchaseRoster.setDate(resultSet.getDate("Date"));
-            purchaseRoster.setTime(resultSet.getTime("Time"));
+            purchaseRoster.setLocalDateTime(resultSet.getTimestamp("DateTime").toLocalDateTime());
             purchaseRoster.setCost(resultSet.getBigDecimal("Cost"));
             result.add(purchaseRoster);
         }
@@ -60,8 +58,7 @@ public class PurchaseRosterDao {
         while (resultSet.next()) {
             PurchaseRoster purchaseRoster = new PurchaseRoster();
             purchaseRoster.setPurchaseId(resultSet.getInt("PurchaseId"));
-            purchaseRoster.setDate(resultSet.getDate("Date"));
-            purchaseRoster.setTime(resultSet.getTime("Time"));
+            purchaseRoster.setLocalDateTime(resultSet.getTimestamp("DateTime").toLocalDateTime());
             purchaseRoster.setCost(resultSet.getBigDecimal("Cost"));
             purchaseRosters.add(purchaseRoster);
         }

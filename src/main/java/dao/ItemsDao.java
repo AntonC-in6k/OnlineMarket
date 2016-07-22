@@ -42,11 +42,11 @@ public class ItemsDao {
         List<Items> items = new ArrayList<Items>();
         while (resultSet.next()) {
             Items item = new Items();
-            item.createRecord(resultSet.getInt("ItemId")+
-                    resultSet.getString("ItemName")+
-                    resultSet.getInt("CategoryId")+
-                    resultSet.getBigDecimal("Cost")+
-                    resultSet.getInt("NumberOfSells"));
+            item.setItemId(resultSet.getInt("ItemId"));
+            item.setItemName(resultSet.getString("ItemName"));
+            item.setCategoryId(resultSet.getInt("CategoryId"));
+            item.setCost(resultSet.getBigDecimal("Cost"));
+            item.setNumberOfSells(resultSet.getInt("NumberOfSells"));
             items.add(item);
         }
         return items;

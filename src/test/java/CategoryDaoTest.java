@@ -9,6 +9,7 @@ import dao.ItemsDao;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -49,6 +50,7 @@ public class CategoryDaoTest {
         statement.close();
     }
 
+
     @Test
     public void setAndGetRecord() throws Exception {
         Category testCategory = new Category("Mobile phone");
@@ -63,11 +65,17 @@ public class CategoryDaoTest {
 
     @Test
     public void getNumberOfItemsInCategoryHasSizeTwo() throws Exception {
-        Category testCategory = new Category("Mobile phone");
+        Category testCategory = new Category();
+        testCategory.setCategoryName("Mobile phone");
         categoryDao.create(testCategory);
-        testCategory = new Category("Laptops");
+        testCategory = new Category();
+        testCategory.setCategoryName("Laptops");
         categoryDao.create(testCategory);
-        Items testItems = new Items("Iphone, 0, 500.00, 10");
+        Items testItems = new Items();
+        testItems.setItemName("Iphone");
+        testItems.setCategoryId();
+        testItems.setCost(BigDecimal.valueOf(500.00));
+        testItems.setNumberOfSells(10);
         itemsDao.create(testItems);
         testItems = new Items("Samsung Galaxy, 0, 500.00, 10");
         itemsDao.create(testItems);
