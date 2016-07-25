@@ -24,7 +24,7 @@ public class CategoryDaoTest extends CreateTables {
     private SqlConnectionForTestImpl sqlConnectionForTest;
 
     @Before
-    public void init() throws Exception  {
+    public void init() throws Exception {
         sqlConnectionForTest = new SqlConnectionForTestImpl();
         createTables(sqlConnectionForTest.getConnection());
         categoryDao = new CategoryDao(sqlConnectionForTest.getConnection());
@@ -66,7 +66,7 @@ public class CategoryDaoTest extends CreateTables {
         HashMap<Category, Integer> expected = new HashMap<>();
         Category category = new Category();
         category.setCategoryName("Mobile phone");
-        expected.put(category,2);
+        expected.put(category, 2);
 
         assertThat(categoryDao.getNumberOfItemsInCategory(0), is(expected));
     }

@@ -5,10 +5,6 @@ package entity;
  */
 
 
-import java.util.List;
-import java.util.Set;
-
-
 public class Category {
     private Integer categoryId;
     private String categoryName;
@@ -45,6 +41,5 @@ public class Category {
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
     }
-
 
 }
