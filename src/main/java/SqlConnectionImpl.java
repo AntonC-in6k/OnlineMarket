@@ -8,8 +8,8 @@ import java.sql.SQLException;
 public class SqlConnectionImpl implements SqlConnection {
 
     public Connection getConnection() throws SQLException {
-       Connection connection =  DriverManager.getConnection("jdbc:mysql://localhost:3306/market",
-                "root","IwtFbhGh_71");
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/market",
+                "root", "IwtFbhGh_71");
         return connection;
     }
 }
