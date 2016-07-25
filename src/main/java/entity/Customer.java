@@ -1,26 +1,35 @@
-package entity;
-
-/**
- * Created by employee on 7/22/16.
- */
-public class Customer {
-    private Integer id;
-    private String name;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-}
+//package entity;
+//
+//import javax.persistence.*;
+//
+///**
+// * Created by employee on 7/22/16.
+// */
+//
+//@Entity
+//@Table(name="Customers")
+//public class Customer {
+//
+//    private Integer customerId;
+//    private String customerName;
+//
+//    @Id
+//    @GeneratedValue
+//    public Integer getCustomerId() {
+//        return customerId;
+//    }
+//
+//    public void setCustomerId(Integer customerId) {
+//        this.customerId = customerId;
+//    }
+//
+//    @Column
+//    public String getCustomerName() {
+//        return customerName;
+//    }
+//
+//    public void setCustomerName(String customerName) {
+//        this.customerName = customerName;
+//    }
+//
+//}

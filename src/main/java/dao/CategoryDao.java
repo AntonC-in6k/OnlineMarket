@@ -1,6 +1,9 @@
 package dao;
 
 import entity.Category;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -13,50 +16,27 @@ import java.util.List;
 /**
  * Created by employee on 7/21/16.
  */
-public class CategoryDao extends Dao {
+public class CategoryDao {
+    private Session session;
 
-    public CategoryDao(Connection connection) {
-        super(connection);
-    }
-
-    public void create(Category category) throws SQLException {
-        Statement stmt = connection.createStatement();
-
-        String resultSet = "INSERT INTO Categories " +
-                "(Name) " +
-                "VALUES ('" + category.getCategoryName() + "')";
-        stmt.executeUpdate(resultSet);
-    }
-
-    public List<Category> getAll() throws SQLException {
-        List<Category> categories = new ArrayList<Category>();
-        Statement stmt = connection.createStatement();
-        ResultSet resultSet = stmt.executeQuery("select * from Categories");
-        while (resultSet.next()) {
-            Category category = new Category();
-            category.setCategoryId(resultSet.getInt("CategoryId"));
-            category.setCategoryName(resultSet.getString("Name"));
-            categories.add(category);
-        }
-        return categories;
+    public CategoryDao(Session session) {
+        this.session = session;
     }
 
     public HashMap<Category, Integer> getNumberOfItemsInCategory(int CategoryId) throws SQLException {
-        Statement stmt = connection.createStatement();
-        HashMap<Category, Integer> result = new HashMap<Category, Integer>();
-        ResultSet resultSet = stmt.executeQuery("select Categories.CategoryId, " +
-                "Categories.Name, Count(Items.CategoryId) as ItemsNumber " +
-                "FROM Categories join Items on Categories.CategoryId=Items.CategoryId " +
-                "where Items.CategoryId = " + CategoryId + " " +
-                "GROUP BY Categories.CategoryId");
-        while (resultSet.next()) {
-            Category category = new Category();
-            category.setCategoryId(resultSet.getInt("CategoryId"));
-            category.setCategoryName(resultSet.getString("Name"));
-            result.put(category, resultSet.getInt("ItemsNumber"));
+
+        HashMap<Category, Integer> result = new HashMap<>();
+        List<Category> categories = null;
+        String query = "FROM Category";
+        Transaction tx = null;
+        tx = session.beginTransaction();
+        categories = session.createQuery(query).list();
+        tx.commit();
+        for (Category category : categories) {
+            result.put(category, category.getItems().size());
         }
+
         return result;
     }
-
 }
 

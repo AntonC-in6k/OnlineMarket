@@ -19,7 +19,7 @@ public class SqlConnectionForTestImpl {
 
     public Connection getConnection() throws Exception{
         databaseTester = new JdbcDatabaseTester(org.hsqldb.jdbcDriver.class
-                .getName(), "jdbc:hsqldb:mem:aname");
+                .getName(), "jdbc:hsqldb:mem:db","","");
         return databaseTester.getConnection().getConnection();
     }
 

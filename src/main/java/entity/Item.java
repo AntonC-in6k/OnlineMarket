@@ -1,14 +1,20 @@
 package entity;
 
+import com.sun.istack.internal.NotNull;
+
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 /**
  * Created by Mr_Blame on 21.07.2016.
  */
+
+@Entity
+@Table(name="Item")
 public class Item {
     private Integer itemId;
     private String itemName;
-    private Integer categoryId;
+    private Category categoryId;
     private BigDecimal cost;
 
     @Override
@@ -32,18 +38,25 @@ public class Item {
         return result;
     }
 
+    @Id
+    @GeneratedValue
+    @Column(name = "ItemId", unique = true, nullable = false)
     public Integer getItemId() {
         return itemId;
     }
 
+    @Column
     public String getItemName() {
         return itemName;
     }
 
-    public Integer getCategoryId() {
+    @ManyToOne
+    @JoinColumn(name="CategoryId")
+    public Category getCategoryId() {
         return categoryId;
     }
 
+    @Column
     public BigDecimal getCost() {
         return cost;
     }
@@ -56,7 +69,7 @@ public class Item {
         this.itemName = itemName;
     }
 
-    public void setCategoryId(Integer categoryId) {
+    public void setCategoryId(Category categoryId) {
         this.categoryId = categoryId;
     }
 
