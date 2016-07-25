@@ -11,6 +11,7 @@ import org.junit.Test;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
+import java.util.Map;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -60,7 +61,7 @@ public class CategoryDaoTest extends CreateTables {
 
     @Test
     public void getNumberOfItemsInCategoryHasSizeTwo() throws Exception {
-        HashMap<Category, Integer> expected = new HashMap<>();
+        Map<Category, Integer> expected = new HashMap<>();
         Category category = new Category();
         category.setCategoryName("Mobile phone");
         expected.put(category, 2);

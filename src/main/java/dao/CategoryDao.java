@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by employee on 7/21/16.
@@ -41,9 +42,9 @@ public class CategoryDao extends Dao {
         return categories;
     }
 
-    public HashMap<Category, Integer> getNumberOfItemsInCategory(int CategoryId) throws SQLException {
+    public Map<Category, Integer> getNumberOfItemsInCategory(int CategoryId) throws SQLException {
         Statement stmt = connection.createStatement();
-        HashMap<Category, Integer> result = new HashMap<Category, Integer>();
+        Map<Category, Integer> result = new HashMap<Category, Integer>();
         ResultSet resultSet = stmt.executeQuery("select Categories.CategoryId, " +
                 "Categories.Name, Count(Items.CategoryId) as ItemsNumber " +
                 "FROM Categories join Items on Categories.CategoryId=Items.CategoryId " +

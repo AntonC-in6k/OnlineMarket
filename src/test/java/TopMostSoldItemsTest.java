@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.Map;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -144,13 +145,13 @@ public class TopMostSoldItemsTest extends CreateTables {
 
     @Test
     public void Top3MostSoldItemsTest() throws Exception {
-        HashMap<Integer, Integer> testHashMap = new HashMap<>();
-        testHashMap.put(0, 5);
-        testHashMap.put(2, 10);
-        testHashMap.put(3, 12);
+        Map<Integer, Integer> testMap = new HashMap<>();
+        testMap.put(0, 5);
+        testMap.put(2, 10);
+        testMap.put(3, 12);
 
         assertThat(itemsDao.getTopThreeSoldItemsInCategory(0,
-                LocalDateTime.of(2016, 7, 22, 14, 04, 1)), is(testHashMap));
+                LocalDateTime.of(2016, 7, 22, 14, 04, 1)), is(testMap));
 
     }
 }
