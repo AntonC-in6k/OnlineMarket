@@ -145,13 +145,13 @@ public class TopMostSoldItemsTest extends CreateTables {
 
     @Test
     public void Top3MostSoldItemsTest() throws Exception {
-        Map<Integer, Integer> testMap = new HashMap<>();
-        testMap.put(0, 5);
-        testMap.put(2, 10);
-        testMap.put(3, 12);
+        Map<Integer, Integer> expected = new HashMap<>();
+        expected.put(0, 5);
+        expected.put(2, 10);
+        expected.put(3, 12);
 
         assertThat(itemsDao.getTopThreeSoldItemsInCategory(0,
-                LocalDateTime.of(2016, 7, 22, 14, 04, 1)), is(testMap));
+                LocalDateTime.of(2016, 7, 22, 14, 04, 1)), is(expected));
 
     }
 }
