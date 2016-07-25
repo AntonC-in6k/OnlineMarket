@@ -3,9 +3,16 @@ package entity;
 /**
  * Created by employee on 7/21/16.
  */
+
+
+import java.util.List;
+import java.util.Set;
+
+
 public class Category {
     private Integer categoryId;
     private String categoryName;
+
 
     @Override
     public boolean equals(Object o) {
@@ -38,5 +45,6 @@ public class Category {
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
     }
+
 
 }
