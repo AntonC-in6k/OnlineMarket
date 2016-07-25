@@ -7,10 +7,6 @@ public class Category {
     private Integer categoryId;
     private String categoryName;
 
-
-    public Category() {
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -7,8 +7,6 @@ public class Customer {
     private Integer id;
     private String name;
 
-    public Customer(){}
-
     public Integer getId() {
         return id;
     }
